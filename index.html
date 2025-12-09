@@ -93,6 +93,60 @@
         color: var(--accent-cyan) !important;
       }
 
+      .event-ribbon {
+        display: inline-block;
+        background: linear-gradient(
+          to right,
+          #6a00f4,
+          /* royal purple */ #b700ff /* bright violet */
+        );
+        color: #ffffff;
+        padding: 10px 22px;
+        border-radius: 50px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        margin-bottom: 25px;
+        box-shadow: 0 5px 20px rgba(0, 78, 146, 0.25);
+        animation: blinkGlow 1.8s infinite ease-in-out;
+      }
+
+      .event-ribbon-link {
+        text-decoration: none;
+      }
+      .event-ribbon-link:hover {
+        text-decoration: none;
+      }
+
+      .event-ribbon .event-dot {
+        opacity: 0.7;
+        padding: 0 6px;
+      }
+
+      /* fade-in animation for smooth appearance */
+      @keyframes blinkGlow {
+        0% {
+          opacity: 1;
+          box-shadow: 0 5px 20px rgba(0, 78, 146, 0.25);
+        }
+        50% {
+          opacity: 0.35;
+          box-shadow: 0 5px 25px rgba(0, 210, 255, 0.55);
+        }
+        100% {
+          opacity: 1;
+          box-shadow: 0 5px 20px rgba(0, 78, 146, 0.25);
+        }
+      }
+
+      /* Mobile tweaks */
+      @media (max-width: 768px) {
+        .event-ribbon {
+          font-size: 0.85rem;
+          padding: 8px 18px;
+        }
+      }
+      /* PReMI Highlight End */
+
       /* =========================================
             NEW HERO SECTION STYLES (Split Gradient)
          ========================================= */
@@ -380,6 +434,14 @@
       <div class="hero-grid">
         <div class="hero-content-wrapper">
           <div class="hero-text-inner">
+            <a href="/premi.html" class="event-ribbon-link">
+              <div class="event-ribbon">
+                <!-- <strong>PReMI 2025</strong> -->
+                <!-- <span class="event-dot">•</span> -->
+                Join us at PReMI, IIT Delhi on 11 December 2025 for a workshop
+                on Ophthalmic AI.
+              </div>
+            </a>
             <h1 class="hero-headline">Breaking Silos in Ophthalmology & AI</h1>
             <p class="hero-lead">
               We are building a global digital community to break silos and
@@ -547,7 +609,7 @@
                 class="fa-solid fa-envelope-open-text platform-icon email-color"
               ></i>
               <span class="btn btn-sm btn-outline-secondary mt-3 rounded-pill"
-                >Send Email</span
+                >info@ophthal.ai</span
               >
             </a>
           </div>
