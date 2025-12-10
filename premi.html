@@ -12,7 +12,6 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <!-- Added DM Sans for the Timeline -->
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700&family=Inter:wght@300;400;600;700;800&display=swap"
       rel="stylesheet"
@@ -25,56 +24,67 @@
         --accent-cyan: #00d2ff;
         --light-bg: #f4f7f9;
         --text-dark: #2c3e50;
+        /* Navbar height variable */
+        --nav-height: 80px; 
       }
 
       body {
         font-family: "Inter", sans-serif;
         color: var(--text-dark);
-        background-color: #ffffff;
+        background-color: transparent;
         overflow-x: hidden;
+        position: relative;
+        padding-top: var(--nav-height); 
       }
 
-      /* Subtle Background Pattern matching index.html */
-      body::before {
-        content: "";
+      /* =========================================
+         BACKGROUND ANIMATION (Flowing Wave)
+         ========================================= */
+      .bg-animation {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-image: radial-gradient(
-            circle at 20% 30%,
-            rgba(0, 210, 255, 0.05) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            circle at 80% 70%,
-            rgba(0, 78, 146, 0.05) 0%,
-            transparent 50%
-          );
         z-index: -1;
+        background-color: #fff; 
+        /* Soft blue dots */
+        background-image: radial-gradient(#93c5fd 2px, transparent 2px);
+        background-size: 40px 40px; 
+        
+        /* Combined Flow and Pulse Animation */
+        animation: waveFlow 4s linear infinite;
       }
 
-      h1,
-      h2,
-      h3,
-      h4 {
+      @keyframes waveFlow {
+        0% { 
+          background-position: 0 0; 
+          opacity: 0.4; /* Start dim */
+        }
+        50% {
+          opacity: 0.7; /* Blink brighter mid-flow */
+        }
+        100% { 
+          background-position: 40px 40px; /* Moves exactly one tile diagonally */
+          opacity: 0.4; /* End dim */
+        }
+      }
+
+      h1, h2, h3, h4 {
         font-weight: 700;
         letter-spacing: -0.5px;
       }
 
-      .text-primary-blue {
-        color: var(--primary-blue);
-      }
-      .text-accent {
-        color: var(--accent-cyan);
-      }
+      .text-primary-blue { color: var(--primary-blue); }
 
       /* Navigation */
       .navbar {
-        background: rgba(255, 255, 255, 0.95) !important;
+        background: rgba(255, 255, 255, 0.9) !important;
         backdrop-filter: blur(10px);
         box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        min-height: var(--nav-height); 
+        padding-top: 10px;
+        padding-bottom: 10px;
       }
 
       .navbar-brand {
@@ -95,14 +105,45 @@
         color: var(--accent-cyan) !important;
       }
 
-      /* Hero Section */
+      /* =========================================
+         HERO SECTION
+         ========================================= */
       #hero-premi {
-        padding: 140px 0 80px;
-        background: linear-gradient(
-          180deg,
-          rgba(255, 255, 255, 0) 0%,
-          var(--light-bg) 100%
-        );
+        padding: 0;
+        margin: 0;
+        position: relative;
+        overflow: hidden;
+        min-height: calc(100vh - var(--nav-height));
+        display: flex;
+        align-items: stretch;
+      }
+
+      .hero-text-wrapper {
+        padding: 15vh 40px 40px 40px; 
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center; 
+        text-align: center;  
+        height: 100%;
+      }
+
+      .hero-image-col {
+        display: flex;
+        align-items: center; 
+        padding: 20px; 
+      }
+
+      .hero-image-col img {
+        /* Soft corners */
+        border-radius: 40px;
+        /* Soft bottom edge (blending effect) */
+        -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+        mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+        height: 85%; 
+        width: 100%;
+        object-fit: cover;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
       }
 
       .hero-title {
@@ -130,29 +171,40 @@
         text-align: center;
         margin-right: 10px;
       }
-
-      /* Hero Image Styling */
-      .hero-img-container {
-        position: relative;
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 20px 50px rgba(0, 78, 146, 0.15);
+      
+      @media (max-width: 991px) {
+        .hero-text-wrapper {
+            padding: 60px 20px;
+        }
+        #hero-premi {
+            height: auto;
+            min-height: auto;
+            flex-direction: column;
+        }
+        .hero-image-col {
+            height: auto;
+            padding: 20px;
+        }
+        .hero-image-col img {
+            height: 400px; 
+        }
       }
 
-      .hero-img-container img {
-        width: 100%;
-        height: auto;
-        display: block;
-        transition: transform 0.5s ease;
-      }
-
-      .hero-img-container:hover img {
-        transform: scale(1.02);
-      }
-
-      /* Section Styling */
+      /* Sections General Styling */
       section {
         padding: 80px 0;
+        position: relative;
+        background-color: transparent;
+      }
+
+      /* =========================================
+         UPDATED: Spacing for About & Agenda
+         ========================================= */
+      #overview {
+        padding-bottom: 20px; /* Reduced bottom padding */
+      }
+      #timeline {
+        padding-top: 20px; /* Reduced top padding */
       }
 
       .section-title {
@@ -165,80 +217,40 @@
         content: "";
         position: absolute;
         left: 0;
+        right: 0; 
+        margin: auto;
         bottom: -10px;
         width: 60px;
         height: 3px;
         background: var(--accent-cyan);
       }
 
-      /* Speaker Cards */
-      .speaker-card {
-        background: white;
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        transition: all 0.3s ease;
-        height: 100%;
-        text-align: center;
-        padding-bottom: 20px;
+      /* Speaker List Styling */
+      .speaker-list-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        transition: transform 0.2s;
       }
-
-      .speaker-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 40px rgba(0, 78, 146, 0.15);
+      .speaker-list-link:hover {
+        transform: translateX(5px);
+        color: var(--primary-blue);
       }
-
-      .speaker-img-wrapper {
-        width: 120px;
-        height: 120px;
-        margin: 30px auto 20px;
-        border-radius: 50%;
-        overflow: hidden;
-        border: 4px solid var(--light-bg);
+      
+      .speaker-list-item {
+        margin-bottom: 12px;
+        font-size: 1.1rem;
       }
-
-      .speaker-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      /* Initial-avatar fallback when photos are not available */
-      .avatar {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 700;
-        color: #ffffff;
-        font-size: 1.4rem;
-        letter-spacing: 0.6px;
-        background: linear-gradient(135deg, var(--primary-blue), var(--accent-cyan));
-      }
-
       .speaker-name {
         font-weight: 700;
         color: var(--primary-blue);
-        margin-bottom: 5px;
+      }
+      .speaker-role {
+        color: #555;
+        font-weight: 500;
       }
 
-      .speaker-title {
-        font-size: 0.9rem;
-        color: var(--text-dark);
-        font-weight: 600;
-        margin-bottom: 5px;
-      }
-
-      .speaker-affil {
-        font-size: 0.85rem;
-        color: #777;
-        padding: 0 15px;
-      }
-
-      /* =========================================
-         CREATIVE TIMELINE CSS
-         ========================================= */
+      /* Timeline CSS */
       .timeline-container {
         position: relative;
         max-width: 1000px;
@@ -246,7 +258,6 @@
         padding: 40px 0;
       }
 
-      /* The vertical line */
       .timeline-container::after {
         content: "";
         position: absolute;
@@ -263,21 +274,14 @@
       .timeline-row {
         padding: 10px 40px;
         position: relative;
-        background-color: inherit;
+        background-color: transparent;
         width: 50%;
         box-sizing: border-box;
       }
 
-      .timeline-row.left {
-        left: 0;
-        text-align: right;
-      }
-      .timeline-row.right {
-        left: 50%;
-        text-align: left;
-      }
+      .timeline-row.left { left: 0; text-align: right; }
+      .timeline-row.right { left: 50%; text-align: left; }
 
-      /* The dots */
       .timeline-row::after {
         content: "";
         position: absolute;
@@ -292,23 +296,20 @@
         transition: all 0.3s ease;
       }
 
-      .timeline-row.right::after {
-        left: -12px;
-      }
-
+      .timeline-row.right::after { left: -12px; }
       .timeline-row:hover::after {
         background-color: var(--accent-cyan);
         transform: scale(1.2);
       }
 
-      /* Content Box */
       .timeline-content {
         padding: 20px 30px;
-        background-color: white;
+        background-color: rgba(255, 255, 255, 0.85);
         position: relative;
         border-radius: 15px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        border: 1px solid rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(5px);
         transition: transform 0.3s ease;
       }
 
@@ -318,13 +319,11 @@
         border-color: var(--accent-cyan);
       }
 
-      /* DM Sans Typography for Timeline */
       .timeline-date {
         font-family: "DM Sans", sans-serif;
         color: var(--accent-cyan);
         font-weight: 700;
         font-size: 0.9rem;
-        letter-spacing: -0.03em; /* Operating at -3 */
         text-transform: uppercase;
         margin-bottom: 5px;
       }
@@ -335,7 +334,6 @@
         color: var(--primary-blue);
         margin-bottom: 5px;
         font-size: 1.5rem;
-        letter-spacing: -0.03em; /* Operating at -3 */
       }
 
       .timeline-desc {
@@ -351,9 +349,7 @@
         font-size: 0.9rem;
         color: #555;
       }
-      .timeline-bullets li {
-        margin-bottom: 5px;
-      }
+      .timeline-bullets li { margin-bottom: 5px; }
       .timeline-bullets li::before {
         content: "•";
         color: var(--accent-cyan);
@@ -363,30 +359,12 @@
         margin-left: -1em;
       }
 
-      /* Responsive Timeline */
       @media screen and (max-width: 768px) {
-        .timeline-container::after {
-          left: 31px;
-        }
-
-        .timeline-row {
-          width: 100%;
-          padding-left: 70px;
-          padding-right: 25px;
-        }
-
-        .timeline-row.left,
-        .timeline-row.right {
-          left: 0;
-          text-align: left;
-        }
-
-        .timeline-row.left::after,
-        .timeline-row.right::after {
-          left: 19px;
-        }
+        .timeline-container::after { left: 31px; }
+        .timeline-row { width: 100%; padding-left: 70px; padding-right: 25px; }
+        .timeline-row.left, .timeline-row.right { left: 0; text-align: left; }
+        .timeline-row.left::after, .timeline-row.right::after { left: 19px; }
       }
-      /* ========================================= */
 
       .btn-main {
         background: linear-gradient(to right, var(--primary-blue), #007bff);
@@ -406,23 +384,19 @@
         background: linear-gradient(to right, var(--primary-blue), #007bff);
       }
 
-      /* Footer */
       footer {
         background: var(--secondary-blue);
         color: #fff;
         padding: 40px 0;
         text-align: center;
-      }
-
-      .your-selector {
-        -webkit-background-clip: text;
-        background-clip: text; /* standard property for compatibility */
-        -webkit-text-fill-color: transparent; /* keep this for WebKit to show the background through text */
+        position: relative;
+        z-index: 1;
       }
     </style>
   </head>
   <body>
-    <!-- Navbar -->
+    <div class="bg-animation"></div>
+
     <nav class="navbar navbar-expand-lg fixed-top">
       <div class="container">
         <a class="navbar-brand" href="index.html">
@@ -460,58 +434,56 @@
       </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="hero-premi">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-7 mb-5 mb-lg-0">
-            <h1 class="hero-title">Workshop on Ophthalmic AI</h1>
-            <h3 class="fw-light text-muted mb-4">
-              at 11th International Conference on Pattern Recognition and
-              Machine Intelligence (PReMI 2025)
-            </h3>
-            <p class="lead mb-4">
-              Join us at IIT Delhi to explore the frontier of AI in eye care. We
-              are bridging the gap between deep tech engineering and clinical
-              ophthalmology to accelerate health outcomes.
-            </p>
+    <div id="hero-premi" class="container-fluid">
+        <div class="row g-0 w-100">
+          
+          <div class="col-lg-6">
+            <div class="hero-text-wrapper">
+                <h1 class="hero-title">Workshop on Ophthalmic AI</h1>
+                <h3 class="fw-light text-muted mb-4">
+                  at 11th International Conference on Pattern Recognition and
+                  Machine Intelligence (PReMI 2025)
+                </h3>
+                <p class="lead mb-4">
+                  Join us at IIT Delhi to explore the frontier of AI in eye care. We
+                  are bridging the gap between deep tech engineering and clinical
+                  ophthalmology to accelerate health outcomes.
+                </p>
 
-            <div class="d-flex flex-column flex-md-row gap-4 mb-4">
-              <div class="hero-meta">
-                <i class="fa-regular fa-calendar-check hero-icon"></i> December
-                11, 2025
-              </div>
-              <div class="hero-meta">
-                <!-- UPDATED LOCATION -->
-                <i class="fa-solid fa-location-dot hero-icon"></i> LHC, IIT
-                Delhi, India
-              </div>
-            </div>
+                <div class="d-flex flex-wrap justify-content-center gap-4 mb-4">
+                  <div class="hero-meta">
+                    <i class="fa-regular fa-calendar-check hero-icon"></i> December
+                    11, 2025
+                  </div>
+                  <div class="hero-meta">
+                    <i class="fa-solid fa-location-dot hero-icon"></i> LHC, IIT
+                    Delhi, India
+                  </div>
+                </div>
 
-            <div class="d-flex gap-3">
-              <a href="#timeline" class="btn btn-main">View Agenda</a>
-              <a
-                href="#speakers"
-                class="btn btn-outline-primary rounded-pill px-4 py-2 fw-semibold"
-                >See Speakers</a
-              >
-            </div>
-          </div>
-
-          <div class="col-lg-5">
-            <div class="hero-img-container">
-              <img
-                src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                alt="AI Eye Analysis Concept"
-                class="img-fluid"
-              />
+                <div class="d-flex gap-3 justify-content-center">
+                  <a href="#timeline" class="btn btn-main">View Agenda</a>
+                  <a
+                    href="#speakers"
+                    class="btn btn-outline-primary rounded-pill px-4 py-2 fw-semibold"
+                    >See Speakers</a
+                  >
+                </div>
             </div>
           </div>
+
+          <div class="col-lg-6 hero-image-col p-0 m-0">
+            <img 
+              src="eye.jpg" 
+              class="w-100 h-100" 
+              style="object-fit: cover;" 
+              alt="Ophthalmic AI Workshop"
+            >
+          </div>
+          
         </div>
-      </div>
-    </section>
+    </div>
 
-    <!-- Overview Section -->
     <section id="overview">
       <div class="container">
         <div class="row">
@@ -530,95 +502,6 @@
       </div>
     </section>
 
-    <!-- Speakers Section -->
-    <section id="speakers" class="bg-light">
-      <div class="container">
-        <div class="text-center mb-5">
-          <h2 class="section-title">Speakers/Organisers</h2>
-        </div>
-
-        <div class="row g-4 justify-content-center">
-          <div class="col-md-6 col-lg-3">
-            <div class="speaker-card">
-              <div class="speaker-img-wrapper">
-                <div class="avatar" aria-hidden="true">NS</div>
-              </div>
-              <h5 class="speaker-name">Dr. Namrata Sharma</h5>
-              <div class="speaker-title">Professor of Ophthalmology</div>
-              <div class="speaker-affil">AIIMS</div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3">
-            <div class="speaker-card">
-              <div class="speaker-img-wrapper">
-                <div class="avatar" aria-hidden="true">TG</div>
-              </div>
-              <h5 class="speaker-name">Prof. Tapan Gandhi</h5>
-              <div class="speaker-title">Professor</div>
-              <div class="speaker-affil">IIT Delhi</div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3">
-            <div class="speaker-card">
-              <div class="speaker-img-wrapper">
-                <div class="avatar" aria-hidden="true">SC</div>
-              </div>
-              <h5 class="speaker-name">Prof. Santanu Chaudhury</h5>
-              <div class="speaker-title">Professor</div>
-              <div class="speaker-affil">IIT Delhi</div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3">
-            <div class="speaker-card">
-              <div class="speaker-img-wrapper">
-                <div class="avatar" aria-hidden="true">AP</div>
-              </div>
-              <h5 class="speaker-name">Dr. Ashutosh Pastor</h5>
-              <div class="speaker-title">FITT</div>
-              <div class="speaker-affil">IIT Delhi</div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3">
-            <div class="speaker-card">
-              <div class="speaker-img-wrapper">
-                <div class="avatar" aria-hidden="true">AS</div>
-              </div>
-              <h5 class="speaker-name">Mr. Ankit Saxena</h5>
-              <div class="speaker-title">FITT</div>
-              <div class="speaker-affil">IIT Delhi</div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3">
-            <div class="speaker-card">
-              <div class="speaker-img-wrapper">
-                <div class="avatar" aria-hidden="true">DS</div>
-              </div>
-              <h5 class="speaker-name">Dipinder Sekhon</h5>
-              <div class="speaker-title">Co-Founder</div>
-              <div class="speaker-affil">iKITES Technologies</div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3">
-            <div class="speaker-card">
-              <div class="speaker-img-wrapper">
-                <div class="avatar" aria-hidden="true">VS</div>
-              </div>
-              <h5 class="speaker-name">Vishal Singh</h5>
-              <div class="speaker-title">Co-Founder</div>
-              <div class="speaker-affil">iKITES Technologies</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- WORKSHOP AGENDA (Replaces Timeline) -->
     <section id="timeline">
       <div class="container">
         <div class="text-center mb-5">
@@ -629,7 +512,6 @@
         </div>
 
         <div class="timeline-container">
-          <!-- Item 1 -->
           <div class="timeline-row left">
             <div class="timeline-content">
               <div class="timeline-date">15 Minutes</div>
@@ -641,7 +523,6 @@
             </div>
           </div>
 
-          <!-- Item 2 -->
           <div class="timeline-row right">
             <div class="timeline-content">
               <div class="timeline-date">60 Minutes</div>
@@ -658,7 +539,6 @@
             </div>
           </div>
 
-          <!-- Item 3 -->
           <div class="timeline-row left">
             <div class="timeline-content">
               <div class="timeline-date">60 Minutes</div>
@@ -674,7 +554,6 @@
             </div>
           </div>
 
-          <!-- Item 4 -->
           <div class="timeline-row right">
             <div class="timeline-content">
               <div class="timeline-date">15 Minutes</div>
@@ -685,7 +564,6 @@
             </div>
           </div>
 
-          <!-- Item 5 -->
           <div class="timeline-row left">
             <div class="timeline-content">
               <div class="timeline-date">30 Minutes</div>
@@ -699,7 +577,74 @@
       </div>
     </section>
 
-    <!-- Footer -->
+    <section id="speakers">
+      <div class="container text-center">
+        <div class="mb-5">
+          <h2 class="section-title">Speakers/Organisers</h2>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            
+            <div class="mb-4">
+                <a href="https://www.aiims.edu/index.php/en/component/content/article?id=558" target="_blank" class="speaker-list-link">
+                    <div class="speaker-list-item">
+                        <span class="speaker-name">Dr. Namrata Sharma</span>, <span class="speaker-role">Professor, AIIMS</span>
+                    </div>
+                </a>
+            </div>
+
+            <hr class="w-50 mx-auto opacity-25 my-4">
+
+            <div class="mb-4">
+                <a href="https://ctech.iitd.ac.in/tkgandhi.html" target="_blank" class="speaker-list-link">
+                    <div class="speaker-list-item">
+                        <span class="speaker-name">Prof. Tapan Gandhi</span>, <span class="speaker-role">Professor, IIT Delhi</span>
+                    </div>
+                </a>
+                <a href="https://web.iitd.ac.in/~santanuc/" target="_blank" class="speaker-list-link">
+                    <div class="speaker-list-item">
+                        <span class="speaker-name">Prof. Santanu Chaudhury</span>, <span class="speaker-role">Professor, IIT Delhi</span>
+                    </div>
+                </a>
+            </div>
+
+            <hr class="w-50 mx-auto opacity-25 my-4">
+
+            <div class="mb-4">
+                <a href="https://www.linkedin.com/in/ashutoshpastor/" target="_blank" class="speaker-list-link">
+                    <div class="speaker-list-item">
+                        <span class="speaker-name">Dr. Ashutosh Pastor</span>, <span class="speaker-role">FITT, IIT Delhi</span>
+                    </div>
+                </a>
+                <a href="https://www.linkedin.com/in/ankitsaxena771/" target="_blank" class="speaker-list-link">
+                    <div class="speaker-list-item">
+                        <span class="speaker-name">Mr. Ankit Saxena</span>, <span class="speaker-role">FITT, IIT Delhi</span>
+                    </div>
+                </a>
+            </div>
+
+            <hr class="w-50 mx-auto opacity-25 my-4">
+
+            <div class="mb-4">
+                <a href="https://www.linkedin.com/in/dipinder/" target="_blank" class="speaker-list-link">
+                    <div class="speaker-list-item">
+                        <span class="speaker-name">Dipinder Sekhon</span>, <span class="speaker-role">Co-Founder, iKITES</span>
+                    </div>
+                </a>
+                <a href="https://www.linkedin.com/in/vishal--kumar--singh/" target="_blank" class="speaker-list-link">
+                    <div class="speaker-list-item">
+                        <span class="speaker-name">Vishal Singh</span>, <span class="speaker-role">Co-Founder, iKITES</span>
+                    </div>
+                </a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
     <footer>
       <div class="container">
         <h4><i class="fa-solid fa-eye"></i> Ophthal.ai</h4>
