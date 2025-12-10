@@ -25,7 +25,7 @@
         --light-bg: #f4f7f9;
         --text-dark: #2c3e50;
         /* Navbar height variable */
-        --nav-height: 80px; 
+        --nav-height: 80px;
       }
 
       body {
@@ -34,7 +34,7 @@
         background-color: transparent;
         overflow-x: hidden;
         position: relative;
-        padding-top: var(--nav-height); 
+        padding-top: var(--nav-height);
       }
 
       /* =========================================
@@ -47,42 +47,47 @@
         width: 100%;
         height: 100%;
         z-index: -1;
-        background-color: #fff; 
+        background-color: #fff;
         /* Soft blue dots */
         background-image: radial-gradient(#93c5fd 2px, transparent 2px);
-        background-size: 40px 40px; 
-        
+        background-size: 40px 40px;
+
         /* Combined Flow and Pulse Animation */
         animation: waveFlow 4s linear infinite;
       }
 
       @keyframes waveFlow {
-        0% { 
-          background-position: 0 0; 
+        0% {
+          background-position: 0 0;
           opacity: 0.4; /* Start dim */
         }
         50% {
           opacity: 0.7; /* Blink brighter mid-flow */
         }
-        100% { 
+        100% {
           background-position: 40px 40px; /* Moves exactly one tile diagonally */
           opacity: 0.4; /* End dim */
         }
       }
 
-      h1, h2, h3, h4 {
+      h1,
+      h2,
+      h3,
+      h4 {
         font-weight: 700;
         letter-spacing: -0.5px;
       }
 
-      .text-primary-blue { color: var(--primary-blue); }
+      .text-primary-blue {
+        color: var(--primary-blue);
+      }
 
       /* Navigation */
       .navbar {
         background: rgba(255, 255, 255, 0.9) !important;
         backdrop-filter: blur(10px);
         box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
-        min-height: var(--nav-height); 
+        min-height: var(--nav-height);
         padding-top: 10px;
         padding-bottom: 10px;
       }
@@ -119,31 +124,35 @@
       }
 
       .hero-text-wrapper {
-        padding: 15vh 40px 40px 40px; 
+        padding: 15vh 40px 40px 40px;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        align-items: center; 
-        text-align: center;  
+        align-items: center;
+        text-align: center;
         height: 100%;
       }
 
       .hero-image-col {
         display: flex;
-        align-items: center; 
-        padding: 20px; 
+        align-items: center;
+        padding: 20px;
       }
 
       .hero-image-col img {
         /* Soft corners */
         border-radius: 40px;
         /* Soft bottom edge (blending effect) */
-        -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+        -webkit-mask-image: linear-gradient(
+          to bottom,
+          black 80%,
+          transparent 100%
+        );
         mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-        height: 85%; 
+        height: 85%;
         width: 100%;
         object-fit: cover;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
       }
 
       .hero-title {
@@ -171,22 +180,22 @@
         text-align: center;
         margin-right: 10px;
       }
-      
+
       @media (max-width: 991px) {
         .hero-text-wrapper {
-            padding: 60px 20px;
+          padding: 60px 20px;
         }
         #hero-premi {
-            height: auto;
-            min-height: auto;
-            flex-direction: column;
+          height: auto;
+          min-height: auto;
+          flex-direction: column;
         }
         .hero-image-col {
-            height: auto;
-            padding: 20px;
+          height: auto;
+          padding: 20px;
         }
         .hero-image-col img {
-            height: 400px; 
+          height: 400px;
         }
       }
 
@@ -217,7 +226,7 @@
         content: "";
         position: absolute;
         left: 0;
-        right: 0; 
+        right: 0;
         margin: auto;
         bottom: -10px;
         width: 60px;
@@ -236,7 +245,7 @@
         transform: translateX(5px);
         color: var(--primary-blue);
       }
-      
+
       .speaker-list-item {
         margin-bottom: 12px;
         font-size: 1.1rem;
@@ -279,8 +288,14 @@
         box-sizing: border-box;
       }
 
-      .timeline-row.left { left: 0; text-align: right; }
-      .timeline-row.right { left: 50%; text-align: left; }
+      .timeline-row.left {
+        left: 0;
+        text-align: right;
+      }
+      .timeline-row.right {
+        left: 50%;
+        text-align: left;
+      }
 
       .timeline-row::after {
         content: "";
@@ -296,7 +311,9 @@
         transition: all 0.3s ease;
       }
 
-      .timeline-row.right::after { left: -12px; }
+      .timeline-row.right::after {
+        left: -12px;
+      }
       .timeline-row:hover::after {
         background-color: var(--accent-cyan);
         transform: scale(1.2);
@@ -349,7 +366,9 @@
         font-size: 0.9rem;
         color: #555;
       }
-      .timeline-bullets li { margin-bottom: 5px; }
+      .timeline-bullets li {
+        margin-bottom: 5px;
+      }
       .timeline-bullets li::before {
         content: "•";
         color: var(--accent-cyan);
@@ -360,10 +379,23 @@
       }
 
       @media screen and (max-width: 768px) {
-        .timeline-container::after { left: 31px; }
-        .timeline-row { width: 100%; padding-left: 70px; padding-right: 25px; }
-        .timeline-row.left, .timeline-row.right { left: 0; text-align: left; }
-        .timeline-row.left::after, .timeline-row.right::after { left: 19px; }
+        .timeline-container::after {
+          left: 31px;
+        }
+        .timeline-row {
+          width: 100%;
+          padding-left: 70px;
+          padding-right: 25px;
+        }
+        .timeline-row.left,
+        .timeline-row.right {
+          left: 0;
+          text-align: left;
+        }
+        .timeline-row.left::after,
+        .timeline-row.right::after {
+          left: 19px;
+        }
       }
 
       .btn-main {
@@ -435,53 +467,51 @@
     </nav>
 
     <div id="hero-premi" class="container-fluid">
-        <div class="row g-0 w-100">
-          
-          <div class="col-lg-6">
-            <div class="hero-text-wrapper">
-                <h1 class="hero-title">Workshop on Ophthalmic AI</h1>
-                <h3 class="fw-light text-muted mb-4">
-                  at 11th International Conference on Pattern Recognition and
-                  Machine Intelligence (PReMI 2025)
-                </h3>
-                <p class="lead mb-4">
-                  Join us at IIT Delhi to explore the frontier of AI in eye care. We
-                  are bridging the gap between deep tech engineering and clinical
-                  ophthalmology to accelerate health outcomes.
-                </p>
+      <div class="row g-0 w-100">
+        <div class="col-lg-6">
+          <div class="hero-text-wrapper">
+            <h1 class="hero-title">Workshop on Ophthalmic AI</h1>
+            <h3 class="fw-light text-muted mb-4">
+              at 11th International Conference on Pattern Recognition and
+              Machine Intelligence (PReMI 2025)
+            </h3>
+            <p class="lead mb-4">
+              Join us at IIT Delhi to explore the frontier of AI in eye care. We
+              are bridging the gap between deep tech engineering and clinical
+              ophthalmology to accelerate health outcomes.
+            </p>
 
-                <div class="d-flex flex-wrap justify-content-center gap-4 mb-4">
-                  <div class="hero-meta">
-                    <i class="fa-regular fa-calendar-check hero-icon"></i> December
-                    11, 2025
-                  </div>
-                  <div class="hero-meta">
-                    <i class="fa-solid fa-location-dot hero-icon"></i> LHC, IIT
-                    Delhi, India
-                  </div>
-                </div>
+            <div class="d-flex flex-wrap justify-content-center gap-4 mb-4">
+              <div class="hero-meta">
+                <i class="fa-regular fa-calendar-check hero-icon"></i> December
+                11, 2025
+              </div>
+              <div class="hero-meta">
+                <i class="fa-solid fa-location-dot hero-icon"></i> LHC 416, IIT
+                Delhi, India
+              </div>
+            </div>
 
-                <div class="d-flex gap-3 justify-content-center">
-                  <a href="#timeline" class="btn btn-main">View Agenda</a>
-                  <a
-                    href="#speakers"
-                    class="btn btn-outline-primary rounded-pill px-4 py-2 fw-semibold"
-                    >See Speakers</a
-                  >
-                </div>
+            <div class="d-flex gap-3 justify-content-center">
+              <a href="#timeline" class="btn btn-main">View Agenda</a>
+              <a
+                href="#speakers"
+                class="btn btn-outline-primary rounded-pill px-4 py-2 fw-semibold"
+                >See Speakers</a
+              >
             </div>
           </div>
-
-          <div class="col-lg-6 hero-image-col p-0 m-0">
-            <img 
-              src="eye.jpg" 
-              class="w-100 h-100" 
-              style="object-fit: cover;" 
-              alt="Ophthalmic AI Workshop"
-            >
-          </div>
-          
         </div>
+
+        <div class="col-lg-6 hero-image-col p-0 m-0">
+          <img
+            src="eye.jpg"
+            class="w-100 h-100"
+            style="object-fit: cover"
+            alt="Ophthalmic AI Workshop"
+          />
+        </div>
+      </div>
     </div>
 
     <section id="overview">
@@ -531,9 +561,14 @@
               <ul class="timeline-bullets text-start">
                 <li>Doctors, Clinics & Hospitals (R&D)</li>
                 <li>Engineering, Tech & AI (R&D)</li>
-                <li>Researchers, Innovators, Startups, Entrepreneurs (Translation)</li>
+                <li>
+                  Researchers, Innovators, Startups, Entrepreneurs (Translation)
+                </li>
                 <li>Pharma & Medical Devices (Market, Scale)</li>
-                <li>Sponsors, Investors, Foundations (Govt. + Private) (Market, Scale)</li>
+                <li>
+                  Sponsors, Investors, Foundations (Govt. + Private) (Market,
+                  Scale)
+                </li>
                 <li>Other: Regulatory bodies, Insurance (Market, Scale)</li>
               </ul>
             </div>
@@ -542,7 +577,9 @@
           <div class="timeline-row left">
             <div class="timeline-content">
               <div class="timeline-date">60 Minutes</div>
-              <h3 class="timeline-title">OADC Pioneering Thoughts</h3>
+              <h3 class="timeline-title">
+                Ophthalmic AI Digital Community (OADC) Pioneering Thoughts
+              </h3>
               <p class="timeline-desc fw-bold mb-2">
                 Round Table Deliberations
               </p>
@@ -585,63 +622,95 @@
 
         <div class="row justify-content-center">
           <div class="col-lg-8">
-            
             <div class="mb-4">
-                <a href="https://www.aiims.edu/index.php/en/component/content/article?id=558" target="_blank" class="speaker-list-link">
-                    <div class="speaker-list-item">
-                        <span class="speaker-name">Dr. Namrata Sharma</span>, <span class="speaker-role">Professor, AIIMS</span>
-                    </div>
-                </a>
+              <a
+                href="https://www.aiims.edu/index.php/en/component/content/article?id=558"
+                target="_blank"
+                class="speaker-list-link"
+              >
+                <div class="speaker-list-item">
+                  <span class="speaker-name">Dr. Namrata Sharma</span>,
+                  <span class="speaker-role">Professor, AIIMS</span>
+                </div>
+              </a>
             </div>
 
-            <hr class="w-50 mx-auto opacity-25 my-4">
+            <hr class="w-50 mx-auto opacity-25 my-4" />
 
             <div class="mb-4">
-                <a href="https://ctech.iitd.ac.in/tkgandhi.html" target="_blank" class="speaker-list-link">
-                    <div class="speaker-list-item">
-                        <span class="speaker-name">Prof. Tapan Gandhi</span>, <span class="speaker-role">Professor, IIT Delhi</span>
-                    </div>
-                </a>
-                <a href="https://web.iitd.ac.in/~santanuc/" target="_blank" class="speaker-list-link">
-                    <div class="speaker-list-item">
-                        <span class="speaker-name">Prof. Santanu Chaudhury</span>, <span class="speaker-role">Professor, IIT Delhi</span>
-                    </div>
-                </a>
+              <a
+                href="https://ctech.iitd.ac.in/tkgandhi.html"
+                target="_blank"
+                class="speaker-list-link"
+              >
+                <div class="speaker-list-item">
+                  <span class="speaker-name">Prof. Tapan Gandhi</span>,
+                  <span class="speaker-role">Professor, IIT Delhi</span>
+                </div>
+              </a>
+              <a
+                href="https://web.iitd.ac.in/~santanuc/"
+                target="_blank"
+                class="speaker-list-link"
+              >
+                <div class="speaker-list-item">
+                  <span class="speaker-name">Prof. Santanu Chaudhury</span>,
+                  <span class="speaker-role">Professor, IIT Delhi</span>
+                </div>
+              </a>
             </div>
 
-            <hr class="w-50 mx-auto opacity-25 my-4">
+            <hr class="w-50 mx-auto opacity-25 my-4" />
 
             <div class="mb-4">
-                <a href="https://www.linkedin.com/in/ashutoshpastor/" target="_blank" class="speaker-list-link">
-                    <div class="speaker-list-item">
-                        <span class="speaker-name">Dr. Ashutosh Pastor</span>, <span class="speaker-role">FITT, IIT Delhi</span>
-                    </div>
-                </a>
-                <a href="https://www.linkedin.com/in/ankitsaxena771/" target="_blank" class="speaker-list-link">
-                    <div class="speaker-list-item">
-                        <span class="speaker-name">Mr. Ankit Saxena</span>, <span class="speaker-role">FITT, IIT Delhi</span>
-                    </div>
-                </a>
+              <a
+                href="https://www.linkedin.com/in/ashutoshpastor/"
+                target="_blank"
+                class="speaker-list-link"
+              >
+                <div class="speaker-list-item">
+                  <span class="speaker-name">Dr. Ashutosh Pastor</span>,
+                  <span class="speaker-role">FITT, IIT Delhi</span>
+                </div>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/ankitsaxena771/"
+                target="_blank"
+                class="speaker-list-link"
+              >
+                <div class="speaker-list-item">
+                  <span class="speaker-name">Mr. Ankit Saxena</span>,
+                  <span class="speaker-role">FITT, IIT Delhi</span>
+                </div>
+              </a>
             </div>
 
-            <hr class="w-50 mx-auto opacity-25 my-4">
+            <hr class="w-50 mx-auto opacity-25 my-4" />
 
             <div class="mb-4">
-                <a href="https://www.linkedin.com/in/dipinder/" target="_blank" class="speaker-list-link">
-                    <div class="speaker-list-item">
-                        <span class="speaker-name">Dipinder Sekhon</span>, <span class="speaker-role">Co-Founder, iKITES</span>
-                    </div>
-                </a>
-                <a href="https://www.linkedin.com/in/vishal--kumar--singh/" target="_blank" class="speaker-list-link">
-                    <div class="speaker-list-item">
-                        <span class="speaker-name">Vishal Singh</span>, <span class="speaker-role">Co-Founder, iKITES</span>
-                    </div>
-                </a>
+              <a
+                href="https://www.linkedin.com/in/dipinder/"
+                target="_blank"
+                class="speaker-list-link"
+              >
+                <div class="speaker-list-item">
+                  <span class="speaker-name">Dipinder Sekhon</span>,
+                  <span class="speaker-role">Co-Founder, iKITES</span>
+                </div>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/vishal--kumar--singh/"
+                target="_blank"
+                class="speaker-list-link"
+              >
+                <div class="speaker-list-item">
+                  <span class="speaker-name">Vishal Singh</span>,
+                  <span class="speaker-role">Co-Founder, iKITES</span>
+                </div>
+              </a>
             </div>
-
           </div>
         </div>
-
       </div>
     </section>
 
