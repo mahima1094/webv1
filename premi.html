@@ -23,70 +23,92 @@
         --primary-blue: #004e92;
         --secondary-blue: #000428;
         --accent-cyan: #00d2ff;
+        --light-bg: #f4f7f9;
         --text-dark: #2c3e50;
       }
 
       body {
         font-family: "Inter", sans-serif;
         color: var(--text-dark);
+        background-color: #ffffff;
         overflow-x: hidden;
       }
 
-      /* Fullscreen center layout */
-      .coming-soon-container {
-        height: 100vh;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 20px;
-        background: linear-gradient(
-          to bottom right,
-          #ffffff,
-          rgba(0, 210, 255, 0.1)
-        );
-        position: relative;
-      }
-
-      /* Subtle glow shapes (matching homepage theme) */
-      .coming-soon-container::before,
-      .coming-soon-container::after {
+      /* Subtle Background Pattern matching index.html */
+      body::before {
         content: "";
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(120px);
-        opacity: 0.22;
-        z-index: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(
+            circle at 20% 30%,
+            rgba(0, 210, 255, 0.05) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 70%,
+            rgba(0, 78, 146, 0.05) 0%,
+            transparent 50%
+          );
+        z-index: -1;
       }
 
-      .coming-soon-container::before {
-        width: 400px;
-        height: 400px;
-        top: -120px;
-        left: -120px;
-        background: var(--accent-cyan);
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-weight: 700;
+        letter-spacing: -0.5px;
       }
 
-      .coming-soon-container::after {
-        width: 350px;
-        height: 350px;
-        bottom: -100px;
-        right: -80px;
-        background: var(--primary-blue);
+      .text-primary-blue {
+        color: var(--primary-blue);
+      }
+      .text-accent {
+        color: var(--accent-cyan);
       }
 
-      .coming-text-wrapper {
-        position: relative;
-        z-index: 2;
-        max-width: 700px;
+      /* Navigation */
+      .navbar {
+        background: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
       }
 
-      .coming-title {
-        font-size: 3.2rem;
-        font-weight: 800;
-        margin-bottom: 15px;
+      .navbar-brand {
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: var(--primary-blue) !important;
+      }
+
+      .nav-link {
+        color: var(--text-dark) !important;
+        font-weight: 600;
+        margin-left: 20px;
+        transition: color 0.3s;
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--accent-cyan) !important;
+      }
+
+      /* Hero Section */
+      #hero-premi {
+        padding: 140px 0 80px;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0) 0%,
+          var(--light-bg) 100%
+        );
+      }
+
+      .hero-title {
+        font-size: 3rem;
+        line-height: 1.2;
+        margin-bottom: 20px;
         background: linear-gradient(
           to right,
           var(--secondary-blue),
@@ -96,39 +118,261 @@
         -webkit-text-fill-color: transparent;
       }
 
-      .coming-subtitle {
-        font-size: 1.25rem;
-        margin-bottom: 25px;
-        color: #4d5c6b;
+      .hero-meta {
+        font-size: 1.1rem;
+        color: #555;
+        font-weight: 500;
       }
 
-      .coming-badge {
+      .hero-icon {
+        color: var(--accent-cyan);
+        width: 24px;
+        text-align: center;
+        margin-right: 10px;
+      }
+
+      /* Hero Image Styling */
+      .hero-img-container {
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 20px 50px rgba(0, 78, 146, 0.15);
+      }
+
+      .hero-img-container img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.5s ease;
+      }
+
+      .hero-img-container:hover img {
+        transform: scale(1.02);
+      }
+
+      /* Section Styling */
+      section {
+        padding: 80px 0;
+      }
+
+      .section-title {
+        margin-bottom: 40px;
+        position: relative;
         display: inline-block;
-        padding: 10px 26px;
-        background: linear-gradient(
-          to right,
-          var(--primary-blue),
-          var(--accent-cyan)
-        );
-        color: #fff;
-        border-radius: 40px;
-        font-weight: 600;
-        font-size: 1rem;
-        margin-bottom: 25px;
-        animation: softBlink 2s infinite ease-in-out;
       }
 
-      @keyframes softBlink {
-        0% {
-          opacity: 1;
+      .section-title::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        width: 60px;
+        height: 3px;
+        background: var(--accent-cyan);
+      }
+
+      /* Speaker Cards */
+      .speaker-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        height: 100%;
+        text-align: center;
+        padding-bottom: 20px;
+      }
+
+      .speaker-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 78, 146, 0.15);
+      }
+
+      .speaker-img-wrapper {
+        width: 120px;
+        height: 120px;
+        margin: 30px auto 20px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 4px solid var(--light-bg);
+      }
+
+      .speaker-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .speaker-name {
+        font-weight: 700;
+        color: var(--primary-blue);
+        margin-bottom: 5px;
+      }
+
+      .speaker-title {
+        font-size: 0.9rem;
+        color: var(--text-dark);
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .speaker-affil {
+        font-size: 0.85rem;
+        color: #777;
+        padding: 0 15px;
+      }
+
+      /* =========================================
+         CREATIVE TIMELINE CSS
+         ========================================= */
+      .timeline-container {
+        position: relative;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 40px 0;
+      }
+
+      /* The vertical line */
+      .timeline-container::after {
+        content: "";
+        position: absolute;
+        width: 4px;
+        background-color: #e9ecef;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -2px;
+        border-radius: 2px;
+        z-index: 0;
+      }
+
+      .timeline-row {
+        padding: 10px 40px;
+        position: relative;
+        background-color: inherit;
+        width: 50%;
+        box-sizing: border-box;
+      }
+
+      .timeline-row.left {
+        left: 0;
+        text-align: right;
+      }
+      .timeline-row.right {
+        left: 50%;
+        text-align: left;
+      }
+
+      /* The dots */
+      .timeline-row::after {
+        content: "";
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        right: -12px;
+        background-color: white;
+        border: 4px solid var(--accent-cyan);
+        top: 25px;
+        border-radius: 50%;
+        z-index: 1;
+        transition: all 0.3s ease;
+      }
+
+      .timeline-row.right::after {
+        left: -12px;
+      }
+
+      .timeline-row:hover::after {
+        background-color: var(--accent-cyan);
+        transform: scale(1.2);
+      }
+
+      /* Content Box */
+      .timeline-content {
+        padding: 20px 30px;
+        background-color: white;
+        position: relative;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+      }
+
+      .timeline-row:hover .timeline-content {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 78, 146, 0.1);
+        border-color: var(--accent-cyan);
+      }
+
+      /* DM Sans Typography for Timeline */
+      .timeline-date {
+        font-family: "DM Sans", sans-serif;
+        color: var(--accent-cyan);
+        font-weight: 700;
+        font-size: 0.9rem;
+        letter-spacing: -0.03em; /* Operating at -3 */
+        text-transform: uppercase;
+        margin-bottom: 5px;
+      }
+
+      .timeline-title {
+        font-family: "DM Sans", sans-serif;
+        font-weight: 700;
+        color: var(--primary-blue);
+        margin-bottom: 5px;
+        font-size: 1.5rem;
+        letter-spacing: -0.03em; /* Operating at -3 */
+      }
+
+      .timeline-desc {
+        font-size: 0.95rem;
+        color: #666;
+        margin-bottom: 0;
+      }
+
+      .timeline-bullets {
+        list-style-type: none;
+        padding-left: 0;
+        margin-top: 10px;
+        font-size: 0.9rem;
+        color: #555;
+      }
+      .timeline-bullets li {
+        margin-bottom: 5px;
+      }
+      .timeline-bullets li::before {
+        content: "•";
+        color: var(--accent-cyan);
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+      }
+
+      /* Responsive Timeline */
+      @media screen and (max-width: 768px) {
+        .timeline-container::after {
+          left: 31px;
         }
-        50% {
-          opacity: 0.45;
+
+        .timeline-row {
+          width: 100%;
+          padding-left: 70px;
+          padding-right: 25px;
         }
-        100% {
-          opacity: 1;
+
+        .timeline-row.left,
+        .timeline-row.right {
+          left: 0;
+          text-align: left;
+        }
+
+        .timeline-row.left::after,
+        .timeline-row.right::after {
+          left: 19px;
         }
       }
+      /* ========================================= */
 
       .btn-main {
         background: linear-gradient(to right, var(--primary-blue), #007bff);
@@ -136,40 +380,322 @@
         padding: 12px 35px;
         font-weight: 600;
         border-radius: 30px;
-        color: #fff;
-        text-decoration: none;
-        box-shadow: 0 5px 18px rgba(0, 78, 146, 0.25);
+        box-shadow: 0 5px 15px rgba(0, 78, 146, 0.2);
+        color: white;
+        transition: transform 0.2s, box-shadow 0.2s;
       }
 
       .btn-main:hover {
-        opacity: 0.95;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 78, 146, 0.3);
+        color: white;
+        background: linear-gradient(to right, var(--primary-blue), #007bff);
       }
 
+      /* Footer */
       footer {
+        background: var(--secondary-blue);
+        color: #fff;
+        padding: 40px 0;
         text-align: center;
-        padding: 20px;
-        color: #777;
-        font-size: 0.9rem;
       }
     </style>
   </head>
-
   <body>
-    <div class="coming-soon-container">
-      <div class="coming-text-wrapper">
-        <div class="coming-badge">Launching Soon</div>
-
-        <h1 class="coming-title">PReMI 2025 Workshop Page</h1>
-
-        <p class="coming-subtitle">
-          We're preparing something special. The detailed PReMI 2025 Ophthalmic
-          AI workshop page will be live shortly.
-        </p>
-
-        <a href="/" class="btn-main">Back to Home</a>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <i class="fa-solid fa-eye"></i> Ophthal.ai
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav align-items-center">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#vision">Our Vision</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="btn btn-main ms-3"
+                href="https://premi25.iitd.ac.in/"
+                target="_blank"
+                >Conference Site</a
+              >
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
+    </nav>
 
-    <footer>© 2025 Ophthal.ai — The Ophthalmic AI Digital Community</footer>
+    <!-- Hero Section -->
+    <section id="hero-premi">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-7 mb-5 mb-lg-0">
+            <h1 class="hero-title">Workshop on Ophthalmic AI</h1>
+            <h3 class="fw-light text-muted mb-4">
+              at 11th International Conference on Pattern Recognition and
+              Machine Intelligence (PReMI 2025)
+            </h3>
+            <p class="lead mb-4">
+              Join us at IIT Delhi to explore the frontier of AI in eye care. We
+              are bridging the gap between deep tech engineering and clinical
+              ophthalmology to accelerate health outcomes.
+            </p>
+
+            <div class="d-flex flex-column flex-md-row gap-4 mb-4">
+              <div class="hero-meta">
+                <i class="fa-regular fa-calendar-check hero-icon"></i> December
+                11, 2025
+              </div>
+              <div class="hero-meta">
+                <!-- UPDATED LOCATION -->
+                <i class="fa-solid fa-location-dot hero-icon"></i> LHC, IIT
+                Delhi, India
+              </div>
+            </div>
+
+            <div class="d-flex gap-3">
+              <a href="#timeline" class="btn btn-main">View Agenda</a>
+              <a
+                href="#speakers"
+                class="btn btn-outline-primary rounded-pill px-4 py-2 fw-semibold"
+                >See Speakers</a
+              >
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="hero-img-container">
+              <img
+                src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                alt="AI Eye Analysis Concept"
+                class="img-fluid"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section id="overview">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-center">
+            <h2 class="section-title">About the Workshop</h2>
+            <p class="lead text-muted">
+              The "Ophthalmic AI" workshop aims to bring together researchers,
+              clinicians, and industry experts to discuss the latest
+              advancements in AI applications for eye health. From Oculomics to
+              Generative AI for retinal imaging, we explore how machine
+              intelligence can solve critical challenges in Blindness
+              prevention.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Speakers Section -->
+    <section id="speakers" class="bg-light">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="section-title">Distinguished Speakers</h2>
+          <p class="text-muted">
+            Leading voices at the intersection of Ophthalmology and Artificial
+            Intelligence.
+          </p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+          <div class="col-md-6 col-lg-4">
+            <div class="speaker-card">
+              <div class="speaker-img-wrapper">
+                <!-- INSERT IMAGE LINK HERE -->
+                <img
+                  src="Dipinder Sekhon.jpg"
+                  alt="Dipinder Sekhon"
+                  class="speaker-img"
+                />
+              </div>
+              <h5 class="speaker-name">Dipinder Sekhon</h5>
+              <div class="speaker-title">Founder</div>
+              <div class="speaker-affil">iKITES Technologies</div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="speaker-card">
+              <div class="speaker-img-wrapper">
+                <!-- INSERT IMAGE LINK HERE -->
+                <img
+                  src="https://via.placeholder.com/150/e0e0e0/808080?text=Prof+Tapan"
+                  alt="Prof. Tapan Gandhi"
+                  class="speaker-img"
+                />
+              </div>
+              <h5 class="speaker-name">Prof. Tapan Gandhi</h5>
+              <div class="speaker-title">Professor</div>
+              <div class="speaker-affil">IIT Delhi</div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="speaker-card">
+              <div class="speaker-img-wrapper">
+                <!-- INSERT IMAGE LINK HERE -->
+                <img
+                  src="https://via.placeholder.com/150/e0e0e0/808080?text=Prof+Santanu"
+                  alt="Prof. Santanu Chaudhury"
+                  class="speaker-img"
+                />
+              </div>
+              <h5 class="speaker-name">Prof. Santanu Chaudhury</h5>
+              <div class="speaker-title">Professor</div>
+              <div class="speaker-affil">IIT Delhi</div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="speaker-card">
+              <div class="speaker-img-wrapper">
+                <!-- INSERT IMAGE LINK HERE -->
+                <img
+                  src="https://via.placeholder.com/150/e0e0e0/808080?text=Dr+Ashutosh"
+                  alt="Dr. Ashutosh Pastor"
+                  class="speaker-img"
+                />
+              </div>
+              <h5 class="speaker-name">Dr. Ashutosh Pastor</h5>
+              <div class="speaker-title">FITT</div>
+              <div class="speaker-affil">IIT Delhi</div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4">
+            <div class="speaker-card">
+              <div class="speaker-img-wrapper">
+                <!-- INSERT IMAGE LINK HERE -->
+                <img
+                  src="https://via.placeholder.com/150/e0e0e0/808080?text=Mr+Ankit"
+                  alt="Mr. Ankit Saxena"
+                  class="speaker-img"
+                />
+              </div>
+              <h5 class="speaker-name">Mr. Ankit Saxena</h5>
+              <div class="speaker-title">FITT</div>
+              <div class="speaker-affil">IIT Delhi</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORKSHOP AGENDA (Replaces Timeline) -->
+    <section id="timeline">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="section-title">Workshop Agenda</h2>
+          <p class="text-muted">
+            A deep dive into the future of Ophthalmic AI.
+          </p>
+        </div>
+
+        <div class="timeline-container">
+          <!-- Item 1 -->
+          <div class="timeline-row left">
+            <div class="timeline-content">
+              <div class="timeline-date">15 Minutes</div>
+              <h3 class="timeline-title">Opening Remarks</h3>
+              <p class="timeline-desc">
+                Plan, Goals of the Workshop, and context within PReMI @ IIT
+                Delhi.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="timeline-row right">
+            <div class="timeline-content">
+              <div class="timeline-date">60 Minutes</div>
+              <h3 class="timeline-title">AI in Ophthalmology Perspectives</h3>
+              <p class="timeline-desc fw-bold mb-2">India & Global Context</p>
+              <ul class="timeline-bullets text-start">
+                <li>Doctors, Clinics & Hospitals</li>
+                <li>Engineering, Tech & AI (R&D)</li>
+                <li>Startups & Innovators (Translation)</li>
+                <li>Pharma & Medical Devices (Scale)</li>
+                <li>Sponsors, Investors & Regulatory</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="timeline-row left">
+            <div class="timeline-content">
+              <div class="timeline-date">60 Minutes</div>
+              <h3 class="timeline-title">OADC Pioneering Thoughts</h3>
+              <p class="timeline-desc fw-bold mb-2">
+                Round Table Deliberations
+              </p>
+              <ul class="timeline-bullets text-start" style="direction: ltr">
+                <li>OADC Goals & Charter</li>
+                <li>Next Steps: Dos & Don'ts</li>
+                <li>Roles & Responsibilities for Soft Launch</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="timeline-row right">
+            <div class="timeline-content">
+              <div class="timeline-date">15 Minutes</div>
+              <h3 class="timeline-title">Closing Remarks</h3>
+              <p class="timeline-desc">
+                Summary of discussions and OADC registrations/onboarding.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="timeline-row left">
+            <div class="timeline-content">
+              <div class="timeline-date">30 Minutes</div>
+              <h3 class="timeline-title">Tea & Networking</h3>
+              <p class="timeline-desc">
+                Informal networking and community building.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <h4><i class="fa-solid fa-eye"></i> Ophthal.ai</h4>
+        <p class="mb-2">© 2025 Ophthalmic AI Digital Community</p>
+        <small class="opacity-50"
+          >Part of the PReMI 2025 Conference Ecosystem</small
+        >
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
