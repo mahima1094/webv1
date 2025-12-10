@@ -203,6 +203,20 @@
         object-fit: cover;
       }
 
+      /* Initial-avatar fallback when photos are not available */
+      .avatar {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        color: #ffffff;
+        font-size: 1.4rem;
+        letter-spacing: 0.6px;
+        background: linear-gradient(135deg, var(--primary-blue), var(--accent-cyan));
+      }
+
       .speaker-name {
         font-weight: 700;
         color: var(--primary-blue);
@@ -520,39 +534,25 @@
     <section id="speakers" class="bg-light">
       <div class="container">
         <div class="text-center mb-5">
-          <h2 class="section-title">Distinguished Speakers</h2>
-          <p class="text-muted">
-            Leading voices at the intersection of Ophthalmology and Artificial
-            Intelligence.
-          </p>
+          <h2 class="section-title">Speakers/Organisers</h2>
         </div>
 
         <div class="row g-4 justify-content-center">
-          <div class="col-md-6 col-lg-4">
+          <div class="col-md-6 col-lg-3">
             <div class="speaker-card">
               <div class="speaker-img-wrapper">
-                <!-- INSERT IMAGE LINK HERE -->
-                <img
-                  src="Dipinder Sekhon.jpg"
-                  alt="Dipinder Sekhon"
-                  class="speaker-img"
-                />
+                <div class="avatar" aria-hidden="true">NS</div>
               </div>
-              <h5 class="speaker-name">Dipinder Sekhon</h5>
-              <div class="speaker-title">Founder</div>
-              <div class="speaker-affil">iKITES Technologies</div>
+              <h5 class="speaker-name">Dr. Namrata Sharma</h5>
+              <div class="speaker-title">Professor of Ophthalmology</div>
+              <div class="speaker-affil">AIIMS</div>
             </div>
           </div>
 
-          <div class="col-md-6 col-lg-4">
+          <div class="col-md-6 col-lg-3">
             <div class="speaker-card">
               <div class="speaker-img-wrapper">
-                <!-- INSERT IMAGE LINK HERE -->
-                <img
-                  src="https://via.placeholder.com/150/e0e0e0/808080?text=Prof+Tapan"
-                  alt="Prof. Tapan Gandhi"
-                  class="speaker-img"
-                />
+                <div class="avatar" aria-hidden="true">TG</div>
               </div>
               <h5 class="speaker-name">Prof. Tapan Gandhi</h5>
               <div class="speaker-title">Professor</div>
@@ -560,15 +560,10 @@
             </div>
           </div>
 
-          <div class="col-md-6 col-lg-4">
+          <div class="col-md-6 col-lg-3">
             <div class="speaker-card">
               <div class="speaker-img-wrapper">
-                <!-- INSERT IMAGE LINK HERE -->
-                <img
-                  src="https://via.placeholder.com/150/e0e0e0/808080?text=Prof+Santanu"
-                  alt="Prof. Santanu Chaudhury"
-                  class="speaker-img"
-                />
+                <div class="avatar" aria-hidden="true">SC</div>
               </div>
               <h5 class="speaker-name">Prof. Santanu Chaudhury</h5>
               <div class="speaker-title">Professor</div>
@@ -576,15 +571,10 @@
             </div>
           </div>
 
-          <div class="col-md-6 col-lg-4">
+          <div class="col-md-6 col-lg-3">
             <div class="speaker-card">
               <div class="speaker-img-wrapper">
-                <!-- INSERT IMAGE LINK HERE -->
-                <img
-                  src="https://via.placeholder.com/150/e0e0e0/808080?text=Dr+Ashutosh"
-                  alt="Dr. Ashutosh Pastor"
-                  class="speaker-img"
-                />
+                <div class="avatar" aria-hidden="true">AP</div>
               </div>
               <h5 class="speaker-name">Dr. Ashutosh Pastor</h5>
               <div class="speaker-title">FITT</div>
@@ -592,19 +582,36 @@
             </div>
           </div>
 
-          <div class="col-md-6 col-lg-4">
+          <div class="col-md-6 col-lg-3">
             <div class="speaker-card">
               <div class="speaker-img-wrapper">
-                <!-- INSERT IMAGE LINK HERE -->
-                <img
-                  src="https://via.placeholder.com/150/e0e0e0/808080?text=Mr+Ankit"
-                  alt="Mr. Ankit Saxena"
-                  class="speaker-img"
-                />
+                <div class="avatar" aria-hidden="true">AS</div>
               </div>
               <h5 class="speaker-name">Mr. Ankit Saxena</h5>
               <div class="speaker-title">FITT</div>
               <div class="speaker-affil">IIT Delhi</div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="speaker-card">
+              <div class="speaker-img-wrapper">
+                <div class="avatar" aria-hidden="true">DS</div>
+              </div>
+              <h5 class="speaker-name">Dipinder Sekhon</h5>
+              <div class="speaker-title">Co-Founder</div>
+              <div class="speaker-affil">iKITES Technologies</div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="speaker-card">
+              <div class="speaker-img-wrapper">
+                <div class="avatar" aria-hidden="true">VS</div>
+              </div>
+              <h5 class="speaker-name">Vishal Singh</h5>
+              <div class="speaker-title">Co-Founder</div>
+              <div class="speaker-affil">iKITES Technologies</div>
             </div>
           </div>
         </div>
@@ -641,11 +648,12 @@
               <h3 class="timeline-title">AI in Ophthalmology Perspectives</h3>
               <p class="timeline-desc fw-bold mb-2">India & Global Context</p>
               <ul class="timeline-bullets text-start">
-                <li>Doctors, Clinics & Hospitals</li>
+                <li>Doctors, Clinics & Hospitals (R&D)</li>
                 <li>Engineering, Tech & AI (R&D)</li>
-                <li>Startups & Innovators (Translation)</li>
-                <li>Pharma & Medical Devices (Scale)</li>
-                <li>Sponsors, Investors & Regulatory</li>
+                <li>Researchers, Innovators, Startups, Entrepreneurs (Translation)</li>
+                <li>Pharma & Medical Devices (Market, Scale)</li>
+                <li>Sponsors, Investors, Foundations (Govt. + Private) (Market, Scale)</li>
+                <li>Other: Regulatory bodies, Insurance (Market, Scale)</li>
               </ul>
             </div>
           </div>
