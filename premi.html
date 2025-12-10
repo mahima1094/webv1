@@ -399,6 +399,12 @@
         padding: 40px 0;
         text-align: center;
       }
+
+      .your-selector {
+        -webkit-background-clip: text;
+        background-clip: text; /* standard property for compatibility */
+        -webkit-text-fill-color: transparent; /* keep this for WebKit to show the background through text */
+      }
     </style>
   </head>
   <body>

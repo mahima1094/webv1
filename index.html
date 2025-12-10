@@ -114,6 +114,68 @@
         animation: blinkGlow 1.8s infinite ease-in-out;
       }
 
+      /* Small inline banner placed inside the hero (visually subtle) */
+      .hero-banner {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 16px;
+        border-radius: 12px;
+        background: linear-gradient(90deg, #6a00f4 0%, #b700ff 100%);
+        color: #ffffff;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: 0 6px 18px rgba(103, 0, 148, 0.12);
+        transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s;
+        white-space: normal; /* allow wrapping for longer copy */
+        font-size: 0.98rem;
+        max-width: 720px;
+        margin-bottom: 18px; /* spacing so it doesn't collide with the headline */
+        margin-top: -28px; /* lift into the top white space on larger screens */
+        animation: bannerBlink 2.6s infinite ease-in-out; /* subtle attention grabber */
+      }
+
+      .hero-banner:hover,
+      .hero-banner:focus {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 26px rgba(103, 0, 148, 0.14);
+        text-decoration: none;
+      }
+
+      /* decorative dot removed per request */
+
+      /* Subtle blink/pulse for the hero banner - respectful and not harsh */
+      @keyframes bannerBlink {
+        0% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        50% {
+          opacity: 0.65;
+          transform: translateY(-1px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Respect users who prefer reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        .hero-banner {
+          animation: none;
+        }
+      }
+
+      /* Avoid lifting on small screens so banner doesn't overlap the navbar */
+      @media (max-width: 768px) {
+        .hero-banner {
+          margin-top: 0;
+          padding: 10px 12px;
+          font-size: 0.95rem;
+        }
+      }
+
       .event-ribbon-link {
         text-decoration: none;
       }
@@ -248,6 +310,7 @@
           var(--primary-blue)
         );
         -webkit-background-clip: text;
+        background-clip: text; /* standard property for modern browsers */
         -webkit-text-fill-color: transparent;
       }
 
@@ -399,6 +462,7 @@
     </style>
   </head>
   <body>
+    <!-- Inline hero banner (moved inside the hero content) - placeholder removed from top -->
     <nav class="navbar navbar-expand-lg fixed-top">
       <div class="container">
         <a class="navbar-brand" href="#">
@@ -438,6 +502,14 @@
       <div class="hero-grid">
         <div class="hero-content-wrapper">
           <div class="hero-text-inner">
+            <a
+              href="premi.html"
+              class="hero-banner"
+              aria-label="Join PReMI event at IIT Delhi"
+            >
+              Join us at PReMI, IIT Delhi on 11 December 2025 for a workshop on
+              Ophthalmic AI.
+            </a>
             <h1 class="hero-headline">Breaking Silos in Ophthalmology & AI</h1>
             <p class="hero-lead">
               We are building a global digital community to break silos and
