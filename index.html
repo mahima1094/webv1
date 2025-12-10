@@ -300,8 +300,9 @@
       }
 
       .hero-headline {
-        font-size: 3.5rem;
-        line-height: 1.2;
+        /* Responsive headline: scales smoothly between mobile and desktop */
+        font-size: clamp(2rem, 6vw, 3.5rem);
+        line-height: 1.12;
         margin-bottom: 25px;
         /* Gradient text */
         background: linear-gradient(
@@ -312,6 +313,17 @@
         -webkit-background-clip: text;
         background-clip: text; /* standard property for modern browsers */
         -webkit-text-fill-color: transparent;
+      }
+
+      /* Extra safety on very small screens to avoid clipping */
+      @media (max-width: 480px) {
+        .hero-headline {
+          font-size: clamp(1.6rem, 7vw, 2.4rem);
+          line-height: 1.08;
+          margin-top: 6px; /* small cushion so it doesn't touch the banner */
+          word-break: break-word;
+          hyphens: auto;
+        }
       }
 
       .hero-lead {
